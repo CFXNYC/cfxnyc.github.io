@@ -1,0 +1,504 @@
+<title>Carlos Arana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0a0b0d;
+    --paper:#eef1f3;
+    --paper-dim:#a4aeb7;
+    --muted:#68717a;
+    --line: rgba(238,241,243,0.12);
+    --line-strong: rgba(238,241,243,0.24);
+    --accent:#4d7194;
+    --accent-soft:#82a5c2;
+    --accent-dim: rgba(77,113,148,0.18);
+    --surface: #121316;
+    --surface-raised: #181a1e;
+
+    --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--ink);}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--accent); color:var(--ink); }
+
+  a{ color:inherit; }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:50;
+    opacity:0.05; mix-blend-mode:overlay;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px clamp(20px,5vw,64px);
+    background: rgba(14,13,12,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .wordmark{
+    font-family:var(--display); font-weight:900; letter-spacing:0.02em;
+    font-size:20px; text-transform:uppercase;
+  }
+  .wordmark span{ color:var(--accent); }
+  .topnav{ display:flex; gap:clamp(14px,2vw,28px); font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; }
+  .topnav a{ text-decoration:none; color:var(--paper-dim); transition:color .2s ease; }
+  .topnav a:hover{ color:var(--accent-soft); }
+  .topnav a{ display:none; }
+  @media (min-width:720px){ .topnav a{ display:inline; } }
+
+  section{ padding: clamp(48px,9vw,120px) clamp(20px,5vw,64px); }
+  .rule{
+    display:flex; align-items:center; gap:14px;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--muted); margin: 0 0 40px;
+  }
+  .rule::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .rule b{ color:var(--accent-soft); font-weight:500; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: min(92vh, 900px);
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+    padding-top: clamp(80px,14vh,160px);
+  }
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10%; z-index:0;
+    background:
+      radial-gradient(60% 50% at 78% 18%, rgba(77,113,148,0.20), transparent 60%),
+      radial-gradient(40% 40% at 10% 85%, rgba(77,113,148,0.09), transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .slate{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--accent-soft); display:flex; gap:10px; align-items:center; margin-bottom:22px;
+  }
+  .slate::before{ content:"●"; color:var(--accent); font-size:9px; }
+  h1.title{
+    font-family:var(--display); font-weight:900; text-transform:uppercase;
+    font-size: clamp(56px, 10.5vw, 148px);
+    line-height:0.86; letter-spacing:-0.01em; margin:0 0 8px;
+    text-wrap:balance;
+  }
+  h1.title em{ font-style:normal; color:var(--accent); }
+  .role-line{
+    font-family:var(--mono); font-size:clamp(13px,1.5vw,16px); letter-spacing:0.04em;
+    color:var(--paper-dim); margin: 18px 0 34px; max-width:56ch;
+  }
+  .role-line .sep{ color:var(--accent); margin:0 8px; }
+  .thesis{
+    font-size:clamp(19px,2.4vw,26px); line-height:1.5; max-width:42ch;
+    color:var(--paper); font-weight:400;
+  }
+  .thesis strong{ color:var(--accent-soft); font-weight:600; font-style:italic; }
+
+  .scrollcue{
+    position:absolute; left:clamp(20px,5vw,64px); bottom:28px;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:10px;
+  }
+  .scrollcue .bar{ width:1px; height:34px; background:linear-gradient(var(--accent), transparent); }
+
+  /* ---------- background / bio ---------- */
+  .bio{ display:grid; grid-template-columns: 1fr; gap:36px; max-width:1100px; }
+  @media(min-width:880px){ .bio{ grid-template-columns: 0.9fr 1.4fr; gap:64px; } }
+  .bio h2{
+    font-family:var(--display); font-weight:900; text-transform:uppercase;
+    font-size:clamp(34px,4.4vw,52px); line-height:0.95; margin:0; color:var(--paper);
+  }
+  .bio-copy p{ margin:0 0 20px; color:var(--paper-dim); font-size:17px; }
+  .bio-copy p:last-child{ margin-bottom:0; }
+  .bio-copy .stat{ color:var(--accent-soft); font-style:italic; font-weight:600; }
+
+  /* ---------- reels ---------- */
+  .reel-list{ display:flex; flex-direction:column; }
+  .reel{
+    display:grid; grid-template-columns: 1fr; gap:28px;
+    padding: 40px 0; border-top:1px solid var(--line);
+  }
+  .reel:last-child{ border-bottom:1px solid var(--line); }
+  @media(min-width:920px){ .reel{ grid-template-columns: 1.05fr 1fr; align-items:center; gap:56px; } .reel:nth-child(even){ direction:rtl; } .reel:nth-child(even) > *{ direction:ltr; } }
+
+  /* converging entrance: title/description and video slide in from opposite sides to meet center */
+  .reel > div:first-child,
+  .reel .slate-card{
+    opacity:0; transform:translateY(16px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.19,.72,.27,1);
+  }
+  .reel .slate-card{ transition-delay: .08s; }
+  @media(min-width:920px){
+    .reel:nth-child(odd) > div:first-child{ transform:translateX(-64px); }
+    .reel:nth-child(odd) .slate-card{ transform:translateX(64px); }
+    .reel:nth-child(even) > div:first-child{ transform:translateX(64px); }
+    .reel:nth-child(even) .slate-card{ transform:translateX(-64px); }
+  }
+  .reel.in-view > div:first-child,
+  .reel.in-view .slate-card{
+    opacity:1; transform:translateX(0) translateY(0);
+  }
+
+  .reel h3{
+    font-family:var(--display); font-weight:700; text-transform:uppercase;
+    font-size:clamp(24px,3vw,34px); line-height:1.04; letter-spacing:0.01em;
+    margin:0 0 14px; color:var(--paper);
+  }
+  .reel p{ color:var(--paper-dim); font-size:clamp(16px,1.8vw,19px); margin:0; max-width:52ch; }
+
+  .slate-card{
+    position:relative; aspect-ratio:16/9; border-radius:2px;
+    background: var(--surface);
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+  }
+  .slate-card iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  .slate-tag{
+    position:absolute; top:14px; left:14px; z-index:1; pointer-events:none;
+    font-family:var(--mono); font-size:10px;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--muted);
+    background:rgba(10,11,13,0.55); padding:4px 8px; border-radius:2px;
+  }
+  .slate-tag b{ color:var(--accent-soft); }
+
+  /* ---------- process strip ---------- */
+  .process{
+    display:grid; grid-template-columns:1fr; gap:0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  @media(min-width:820px){ .process{ grid-template-columns:repeat(5,1fr); } }
+  .stage{
+    padding:28px 22px; border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  @media(min-width:820px){ .stage{ border-bottom:none; border-right:1px solid var(--line); } .stage:last-child{ border-right:none; } }
+  .stage-tc{ font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.08em; margin-bottom:14px; }
+  .stage h4{
+    font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:0.01em;
+    font-size:19px; margin:0 0 10px; color:var(--paper);
+  }
+  .stage p{ font-size:13.5px; color:var(--muted); margin:0; line-height:1.5; }
+
+  /* ---------- dashboard feature ---------- */
+  .dash{
+    border:1px solid var(--line-strong); border-radius:2px; padding:clamp(24px,4vw,44px);
+    background: linear-gradient(180deg, var(--surface-raised), var(--surface));
+  }
+  .dash-head{ display:flex; flex-wrap:wrap; gap:16px 40px; justify-content:space-between; align-items:flex-end; margin-bottom:28px; }
+  .dash-head h3{
+    font-family:var(--display); font-weight:800; text-transform:uppercase; font-size:clamp(24px,3vw,34px);
+    margin:0; color:var(--paper);
+  }
+  .dash-head p{ color:var(--paper-dim); max-width:56ch; margin:10px 0 0; font-size:15.5px; }
+
+  /* ---------- capabilities ---------- */
+  .cap-grid{ display:grid; grid-template-columns:1fr; gap:36px; }
+  @media(min-width:720px){ .cap-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:1180px){ .cap-grid{ grid-template-columns:repeat(4,1fr); } }
+  .cap-cat h4{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--accent); margin:0 0 16px; padding-bottom:12px; border-bottom:1px solid var(--line);
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-size:13.5px; padding:7px 12px; border:1px solid var(--line-strong); border-radius:100px;
+    color:var(--paper-dim); font-family:var(--body);
+  }
+
+  /* ---------- stack table ---------- */
+  .stack-row{
+    display:grid; grid-template-columns:1fr; gap:6px 32px;
+    padding:18px 0; border-top:1px solid var(--line);
+  }
+  @media(min-width:760px){ .stack-row{ grid-template-columns: 280px 1fr; align-items:baseline; } }
+  .stack-row:last-child{ border-bottom:1px solid var(--line); }
+  .stack-row .cat{ font-family:var(--mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-soft); }
+  .stack-row .items{ color:var(--paper-dim); font-size:15px; }
+
+  /* ---------- references ---------- */
+  .ref-grid{ display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
+  @media(min-width:720px){ .ref-grid{ grid-template-columns:1fr 1fr; } }
+  .ref-card{ background:var(--surface); padding:28px; }
+  .ref-card .tag{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:14px; }
+  .ref-card h5{ font-family:var(--display); font-weight:700; text-transform:uppercase; font-size:22px; margin:0 0 4px; }
+  .ref-card .role{ color:var(--paper-dim); font-size:14px; margin-bottom:14px; }
+  .ref-card .note{ font-size:13.5px; color:var(--muted); font-style:italic; margin-bottom:16px; }
+  .ref-card a{ font-family:var(--mono); font-size:12.5px; text-decoration:underline; text-underline-offset:3px; color:var(--accent-soft); }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: clamp(48px,9vw,100px) clamp(20px,5vw,64px) 60px;
+    border-top:1px solid var(--line);
+  }
+  .end-slate{ font-family:var(--display); font-weight:900; text-transform:uppercase; font-size:clamp(34px,6vw,72px); line-height:0.95; margin:0 0 30px; }
+  .end-slate em{ font-style:normal; color:var(--accent); }
+  .contact-row{ display:flex; flex-wrap:wrap; gap:28px 48px; font-family:var(--mono); font-size:14px; }
+  .contact-row a{ text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:2px; }
+  .contact-row a:hover{ border-color:var(--accent); color:var(--accent-soft); }
+  .fineprint{ margin-top:48px; font-size:12px; color:var(--muted); font-family:var(--mono); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reel > div:first-child, .reel .slate-card{ transition:none; opacity:1; transform:none; }
+  }
+</style>
+
+<svg class="grain" width="0" height="0">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+</svg>
+<div class="grain" style="filter:url(#noise); background:#000;"></div>
+
+<header class="topbar">
+  <div class="wordmark">Carlos<span>·</span>Arana</div>
+  <nav class="topnav">
+    <a href="#work">Reels</a>
+    <a href="#process">Process</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="slate">Portfolio &mdash; Reel 2026</div>
+    <h1 class="title">Carlos<br><em>Arana</em></h1>
+    <div class="role-line">Human Performance Experience Leader<span class="sep">/</span>Creative Producer<span class="sep">/</span>Experience Architect</div>
+    <p class="thesis">I turn complex business, learning, and performance challenges into <strong>scalable experiences, content, and systems</strong> &mdash; from stakeholder alignment through strategy, production, technology, and iteration.</p>
+  </div>
+  <div class="scrollcue"><span class="bar"></span>Scroll</div>
+</section>
+
+<section id="background">
+  <div class="rule">Background <b>/ 15 Years</b></div>
+  <div class="bio">
+    <h2>Field-tested,<br>now producing.</h2>
+    <div class="bio-copy">
+      <p>My work is grounded in 15 years of human performance, coaching, sales, and business operations &mdash; including more than <span class="stat">9,500 coaching sessions</span> delivered, over <span class="stat">$1 million in revenue</span> generated, and a ranking among the <span class="stat">top 10 of more than 3,000 Equinox coaches</span>. Before moving fully into creative production, I worked directly with clients, developed coaches, led teams, and managed a <span class="stat">$25 million business across five locations</span> and more than 1,500 clients, giving me a practical understanding of customer behavior, field execution, and the business realities behind the work.</p>
+      <p>Today, I apply that operating perspective across creative production, experience design, and technology &mdash; building scalable learning and communication experiences across <span class="stat">more than 117 locations</span>. Projects move from business need and stakeholder alignment through strategy, scripting, production, post-production, deployment, and iteration. Technology, AI, and automation extend that capability by helping me prototype faster, build connected systems, and scale solutions beyond a single deliverable, contributing to <span class="stat">approximately 20% faster production turnaround.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="differentiator">
+  <div class="rule">What Differentiates Me</div>
+  <div class="bio">
+    <h2>Bridge, not<br>specialist.</h2>
+    <div class="bio-copy">
+      <p>I'm not solely a creative producer or a technology specialist. I understand the business problem, the audience, and the behavior we're trying to influence, then build the content and technology solution to address it. That means operating as a bridge between business, creative, and technology &mdash; taking a strategic priority, shaping the narrative, designing the experience, and producing the final deliverable, often covering work that would otherwise require multiple specialists.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="rule">Selected Work <b>/ 7 Reels</b></div>
+  <div class="reel-list">
+
+    <article class="reel">
+      <div>
+        <h3>EQX NEXT</h3>
+        <p>Opening film for Equinox's annual national forum, designed to set the tone for the event and transition teams into the awards experience. I partnered with stakeholders to shape the concept, narrative, and visual direction, then carried the work through production, post-production, motion, audio, and final delivery for the national stage.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">National Forum &middot; <b>Opening Film</b></span><iframe src="https://player.vimeo.com/video/1184219718?h=1205977d6a&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="EQX NEXT"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>EFTI Rebrand | Leadership in Motion</h3>
+        <p>A rebranding film tracing EFTI's evolution from inception through its current identity and future direction. I partnered with stakeholders to shape the historical narrative, define the creative direction, and translate the brand's evolution into a clear visual and editorial story.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">Rebrand &middot; <b>Brand Film</b></span><iframe src="https://player.vimeo.com/video/1089669136?h=e18c0409b6&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="EFTI Rebrand | Leadership in Motion"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>Pilates Training Trailer</h3>
+        <p>Pilates Experience Trailer. Led the development of a brand storytelling asset designed to capture the private Pilates experience, instructor expertise, and member journey. I aligned with Pilates leadership to shape the concept and production approach, directed the shoot, and built the final story around leadership voiceover, carrying the project through cinematography, editing, audio, and final delivery.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">Brand Story &middot; <b>Trailer</b></span><iframe src="https://player.vimeo.com/video/1222878470?h=e4ecd256e5&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Pilates Training Trailer"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>Day in the Life | Leadership Series</h3>
+        <p>A multi-leader storytelling series spanning regional, club, sales, and personal training leadership. I structured the production from the ground up &mdash; aligning the narrative approach, building individualized leader prep guides, organizing the interview framework, directing each conversation, and shaping multiple perspectives into one consistent series.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">Series &middot; <b>4 Episodes</b></span><iframe src="https://player.vimeo.com/video/1171141910?h=050b6daa09&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Day in the Life | Leadership Series"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>Consultation Experience</h3>
+        <p>An end-to-end representation of the client consultation journey using fully generated characters and a custom-built branded environment. I designed character continuity, environments, interactions, and camera language across AI-assisted tools &mdash; showing how high-fidelity generated content can visualize complex SOPs without a traditional shoot.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">AI-Generated &middot; <b>Character Pipeline</b></span><iframe src="https://player.vimeo.com/video/1220599682?h=3b1de694fc&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Consultation Experience"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>Session Experience | Coach Level</h3>
+        <p>A high-level introduction to a larger organizational pilot currently deployed across 10 clubs, framing the coach experience and the behaviors the program reinforces. Built from the ground up with scalability in mind &mdash; with the potential to expand across the full 117-club portfolio.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">Pilot &middot; <b>10 / 117 Clubs</b></span><iframe src="https://player.vimeo.com/video/1193357631?h=92e8ef6241&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Session Experience | Coach Level"></iframe></div>
+    </article>
+
+    <article class="reel">
+      <div>
+        <h3>Elevator Pitch | Coach Sales Training</h3>
+        <p>Developed from the initial learning need through final delivery, partnering with stakeholders to align on the sales behavior the training needed to reinforce. I translated that objective into the instructional approach, scripting, production structure, talent direction, and post-production decisions.</p>
+      </div>
+      <div class="slate-card"><span class="slate-tag">Training &middot; <b>Sales Behavior</b></span><iframe src="https://player.vimeo.com/video/1211726245?h=f873a5e91a&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Elevator Pitch | Coach Sales Training"></iframe></div>
+    </article>
+
+  </div>
+</section>
+
+<section id="process">
+  <div class="rule">How I Work <b>/ 5 Stages</b></div>
+  <div class="process">
+    <div class="stage"><div class="stage-tc">00:01</div><h4>Discover</h4><p>Business need, customer and field behavior, learner problem, stakeholder alignment.</p></div>
+    <div class="stage"><div class="stage-tc">00:02</div><h4>Architect</h4><p>Experience strategy, scripting, information architecture, content systems, production planning.</p></div>
+    <div class="stage"><div class="stage-tc">00:03</div><h4>Produce</h4><p>Video, audio, motion, graphics, and learning assets.</p></div>
+    <div class="stage"><div class="stage-tc">00:04</div><h4>Build</h4><p>Interactive experiences, prototypes, modules, and supporting systems.</p></div>
+    <div class="stage"><div class="stage-tc">00:05</div><h4>Deploy + Measure</h4><p>Enterprise delivery, analytics, iteration, and workflow automation.</p></div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="rule">Featured Build <b>/ Internal Tool</b></div>
+  <div class="dash">
+    <div class="dash-head">
+      <div>
+        <h3>Dashboard Development &amp; Data Automation</h3>
+        <p>A custom web-based dashboard that transforms multiple operational and learning data sources into a unified interactive experience &mdash; front-end development, data modeling, JSON pipelines, automated publishing, and source-of-truth architecture.</p>
+      </div>
+    </div>
+    <p style="color:var(--paper-dim); font-size:15.5px; max-width:70ch; margin:0;">Data moves from Excel and Power Query through automated workflows into structured JSON files, published and rendered through a custom HTML, CSS, and JavaScript interface &mdash; with interactive drill-downs, KPI visualization, coach-level profiles, geographic mapping, and automated refresh.</p>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="rule">Capabilities <b>/ 4 Domains</b></div>
+  <div class="cap-grid">
+    <div class="cap-cat">
+      <h4>Human Performance + Business</h4>
+      <div class="chips">
+        <span class="chip">Human Performance</span>
+        <span class="chip">Coaching + Behavior Change</span>
+        <span class="chip">Customer Experience</span>
+        <span class="chip">Business Strategy</span>
+        <span class="chip">Stakeholder Partnership</span>
+        <span class="chip">KPI + Operational Thinking</span>
+      </div>
+    </div>
+    <div class="cap-cat">
+      <h4>Creative Production</h4>
+      <div class="chips">
+        <span class="chip">Creative Direction</span>
+        <span class="chip">Producing + Directing</span>
+        <span class="chip">Cinematography</span>
+        <span class="chip">Lighting + Audio</span>
+        <span class="chip">Editing + Post</span>
+        <span class="chip">Motion Graphics</span>
+      </div>
+    </div>
+    <div class="cap-cat">
+      <h4>Experience + Interactive</h4>
+      <div class="chips">
+        <span class="chip">Experience Design</span>
+        <span class="chip">Learning Experience Design</span>
+        <span class="chip">Content Systems</span>
+        <span class="chip">Unity</span>
+        <span class="chip">AR / VR</span>
+        <span class="chip">HTML / CSS / JS</span>
+        <span class="chip">Data Visualization</span>
+      </div>
+    </div>
+    <div class="cap-cat">
+      <h4>AI + Automation</h4>
+      <div class="chips">
+        <span class="chip">Generative AI</span>
+        <span class="chip">AI Voice</span>
+        <span class="chip">Multi-Model Workflows</span>
+        <span class="chip">Workflow Automation</span>
+        <span class="chip">Rapid Prototyping</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="rule">Production + Technology Stack</div>
+  <div class="stack-table">
+    <div class="stack-row"><div class="cat">Creative + Post</div><div class="items">DaVinci Resolve &middot; Adobe Creative Cloud &middot; Adobe After Effects &middot; Descript</div></div>
+    <div class="stack-row"><div class="cat">Capture + Production</div><div class="items">Sony camera systems &middot; Professional lenses &middot; Stabilization &middot; Lighting &middot; Dedicated audio capture</div></div>
+    <div class="stack-row"><div class="cat">Interactive + Immersive</div><div class="items">HTML &middot; CSS &middot; JavaScript &middot; JSON &middot; Unity &middot; AR / VR &middot; GitHub</div></div>
+    <div class="stack-row"><div class="cat">Data + Automation</div><div class="items">Power Automate &middot; Excel &middot; Power Query &middot; SharePoint &middot; Azure</div></div>
+    <div class="stack-row"><div class="cat">AI + Generative</div><div class="items">Multi-model AI workflows &middot; Eleven Labs &middot; Artlist &middot; Higgsfield AI &middot; HeyGen</div></div>
+  </div>
+</section>
+
+<section id="references">
+  <div class="rule">Professional References</div>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <div class="tag">Currently Working With</div>
+      <h5>Danny Phang</h5>
+      <div class="role">Head of Learning &amp; Development &middot; Current Manager</div>
+      <div class="note">Reports directly to Danny.</div>
+      <a href="https://www.linkedin.com/in/danny-phang" target="_blank" rel="noopener">View LinkedIn &rarr;</a>
+    </div>
+    <div class="ref-card">
+      <div class="tag">Formerly Worked With</div>
+      <h5>Jason Coulie</h5>
+      <div class="role">Former Mentor and Manager</div>
+      <div class="note">Contact details available on request.</div>
+      <a href="https://www.linkedin.com/in/jasoncoulie" target="_blank" rel="noopener">View LinkedIn &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="end-slate">Let's build<br>the <em>next reel.</em></div>
+  <div class="contact-row">
+    <a href="mailto:carlos@aranafit.com">carlos@aranafit.com</a>
+    <a href="tel:+17855627979">(785) 562-7979</a>
+    <a href="https://www.linkedin.com/in/carlosarananyc/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+  </div>
+  <div class="fineprint">Visual prototype &middot; concept treatment for cfxnyc.notion.site &middot; not yet applied to the live page</div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reel').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reel').forEach(el => el.classList.add('in-view'));
+  }
+
+  document.querySelectorAll('.topnav a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
