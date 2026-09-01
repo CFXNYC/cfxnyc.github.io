@@ -70,7 +70,6 @@
     color:var(--muted); margin: 0 0 40px;
   }
   .rule::after{ content:""; flex:1; height:1px; background:var(--line); }
-  .rule b{ color:var(--accent-soft); font-weight:500; }
 
   /* ---------- hero ---------- */
   .hero{
@@ -87,11 +86,6 @@
     pointer-events:none;
   }
   .hero-inner{ position:relative; z-index:1; }
-  .slate{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--accent-soft); display:flex; gap:10px; align-items:center; margin-bottom:22px;
-  }
-  .slate::before{ content:"●"; color:var(--accent); font-size:9px; }
   h1.title{
     font-family:var(--display); font-weight:900; text-transform:uppercase;
     font-size: clamp(56px, 10.5vw, 148px);
@@ -190,7 +184,6 @@
     position:relative;
   }
   @media(min-width:820px){ .stage{ border-bottom:none; border-right:1px solid var(--line); } .stage:last-child{ border-right:none; } }
-  .stage-tc{ font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.08em; margin-bottom:14px; }
   .stage h4{
     font-family:var(--display); font-weight:700; text-transform:uppercase; letter-spacing:0.01em;
     font-size:19px; margin:0 0 10px; color:var(--paper);
@@ -253,8 +246,6 @@
   .contact-row{ display:flex; flex-wrap:wrap; gap:28px 48px; font-family:var(--mono); font-size:14px; }
   .contact-row a{ text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:2px; }
   .contact-row a:hover{ border-color:var(--accent); color:var(--accent-soft); }
-  .fineprint{ margin-top:48px; font-size:12px; color:var(--muted); font-family:var(--mono); }
-
   @media (prefers-reduced-motion: reduce){
     .reel > div:first-child, .reel .slate-card{ transition:none; opacity:1; transform:none; }
   }
@@ -268,7 +259,7 @@
 <header class="topbar">
   <div class="wordmark">Carlos<span>·</span>Arana</div>
   <nav class="topnav">
-    <a href="#work">Reels</a>
+    <a href="#work">Work</a>
     <a href="#process">Process</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#contact">Contact</a>
@@ -277,7 +268,6 @@
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="slate">Portfolio &mdash; Reel 2026</div>
     <h1 class="title">Carlos<br><em>Arana</em></h1>
     <div class="role-line">Human Performance Experience Leader<span class="sep">/</span>Creative Producer<span class="sep">/</span>Experience Architect</div>
     <p class="thesis">I turn complex business, learning, and performance challenges into <strong>scalable experiences, content, and systems</strong> &mdash; from stakeholder alignment through strategy, production, technology, and iteration.</p>
@@ -286,7 +276,7 @@
 </section>
 
 <section id="background">
-  <div class="rule">Background <b>/ 15 Years</b></div>
+  <div class="rule">Background</div>
   <div class="bio">
     <h2>Field-tested,<br>now producing.</h2>
     <div class="bio-copy">
@@ -307,7 +297,7 @@
 </section>
 
 <section id="work">
-  <div class="rule">Selected Work <b>/ 7 Reels</b></div>
+  <div class="rule">Selected Work</div>
   <div class="reel-list">
 
     <article class="reel">
@@ -370,18 +360,18 @@
 </section>
 
 <section id="process">
-  <div class="rule">How I Work <b>/ 5 Stages</b></div>
+  <div class="rule">How I Work</div>
   <div class="process">
-    <div class="stage"><div class="stage-tc">00:01</div><h4>Discover</h4><p>Business need, customer and field behavior, learner problem, stakeholder alignment.</p></div>
-    <div class="stage"><div class="stage-tc">00:02</div><h4>Architect</h4><p>Experience strategy, scripting, information architecture, content systems, production planning.</p></div>
-    <div class="stage"><div class="stage-tc">00:03</div><h4>Produce</h4><p>Video, audio, motion, graphics, and learning assets.</p></div>
-    <div class="stage"><div class="stage-tc">00:04</div><h4>Build</h4><p>Interactive experiences, prototypes, modules, and supporting systems.</p></div>
-    <div class="stage"><div class="stage-tc">00:05</div><h4>Deploy + Measure</h4><p>Enterprise delivery, analytics, iteration, and workflow automation.</p></div>
+    <div class="stage"><h4>Discover</h4><p>Business need, customer and field behavior, learner problem, stakeholder alignment.</p></div>
+    <div class="stage"><h4>Architect</h4><p>Experience strategy, scripting, information architecture, content systems, production planning.</p></div>
+    <div class="stage"><h4>Produce</h4><p>Video, audio, motion, graphics, and learning assets.</p></div>
+    <div class="stage"><h4>Build</h4><p>Interactive experiences, prototypes, modules, and supporting systems.</p></div>
+    <div class="stage"><h4>Deploy + Measure</h4><p>Enterprise delivery, analytics, iteration, and workflow automation.</p></div>
   </div>
 </section>
 
 <section id="dashboard">
-  <div class="rule">Featured Build <b>/ Internal Tool</b></div>
+  <div class="rule">Featured Build</div>
   <div class="dash">
     <div class="dash-head">
       <div>
@@ -394,7 +384,7 @@
 </section>
 
 <section id="capabilities">
-  <div class="rule">Capabilities <b>/ 4 Domains</b></div>
+  <div class="rule">Capabilities</div>
   <div class="cap-grid">
     <div class="cap-cat">
       <h4>Human Performance + Business</h4>
@@ -475,13 +465,12 @@
 </section>
 
 <footer id="contact">
-  <div class="end-slate">Let's build<br>the <em>next reel.</em></div>
+  <div class="end-slate">Business opportunity.<br>Creative solution.<br><em>Let's build.</em></div>
   <div class="contact-row">
     <a href="mailto:carlos@aranafit.com">carlos@aranafit.com</a>
     <a href="tel:+17855627979">(785) 562-7979</a>
     <a href="https://www.linkedin.com/in/carlosarananyc/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
   </div>
-  <div class="fineprint">Visual prototype &middot; concept treatment for cfxnyc.notion.site &middot; not yet applied to the live page</div>
 </footer>
 
 <script>
