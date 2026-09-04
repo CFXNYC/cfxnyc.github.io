@@ -103,6 +103,11 @@
     color:var(--paper); font-weight:400;
   }
   .thesis strong{ color:var(--accent-soft); font-weight:600; font-style:italic; }
+  .proof-line{
+    font-family:var(--mono); font-size:clamp(12.5px,1.5vw,14px); letter-spacing:0.03em;
+    color:var(--paper-dim); margin-top:26px; max-width:64ch; line-height:1.7;
+  }
+  .proof-line b{ color:var(--accent-soft); font-weight:600; }
 
   .scrollcue{
     position:absolute; left:clamp(20px,5vw,64px); bottom:28px;
@@ -120,7 +125,7 @@
   }
   .bio-copy p{ margin:0 0 20px; color:var(--paper-dim); font-size:17px; }
   .bio-copy p:last-child{ margin-bottom:0; }
-  .bio-copy .stat{ color:var(--accent-soft); font-style:italic; font-weight:600; }
+  .bio-copy .proof-line{ margin-top:0; margin-bottom:22px; }
 
   /* ---------- reels ---------- */
   .reel-list{ display:flex; flex-direction:column; }
@@ -154,7 +159,13 @@
     font-size:clamp(24px,3vw,34px); line-height:1.04; letter-spacing:0.01em;
     margin:0 0 14px; color:var(--paper);
   }
-  .reel p{ color:var(--paper-dim); font-size:clamp(16px,1.8vw,19px); margin:0; max-width:52ch; }
+  .reel p{ color:var(--paper-dim); font-size:clamp(16px,1.8vw,19px); margin:0 0 20px; max-width:52ch; }
+  .reel p:last-of-type{ margin-bottom:0; }
+  .role-row{ max-width:52ch; margin-top:18px; }
+  .role-label{
+    display:block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--muted); margin-bottom:10px;
+  }
 
   .slate-card{
     position:relative; aspect-ratio:16/9; border-radius:2px;
@@ -261,8 +272,9 @@
 <section class="hero">
   <div class="hero-inner">
     <h1 class="title">Carlos<br><em>Arana</em></h1>
-    <div class="role-line">Human Performance Experience Leader<span class="sep">/</span>Creative Producer<span class="sep">/</span>Experience Architect</div>
-    <p class="thesis">I turn complex business, learning, and performance challenges into <strong>scalable experiences, content, and systems</strong> &mdash; from stakeholder alignment through strategy, production, technology, and iteration.</p>
+    <div class="role-line">Creative Producer<span class="sep">/</span>Experience Architect</div>
+    <p class="thesis">I lead creative production and experience design from strategy through execution. I use AI and automation to <strong>prototype faster, build connected systems, and scale beyond a single deliverable</strong>, cutting production turnaround by 20%.</p>
+    <p class="proof-line"><b>$25M</b> business leadership &middot; <b>117+</b> locations &middot; End-to-end production &middot; <b>20%</b> faster turnaround</p>
   </div>
   <div class="scrollcue"><span class="bar"></span>Scroll</div>
 </section>
@@ -272,8 +284,8 @@
   <div class="bio">
     <h2>Field-tested,<br>now producing.</h2>
     <div class="bio-copy">
-      <p>My work is grounded in 15 years of human performance, coaching, sales, and business operations &mdash; including more than <span class="stat">9,500 coaching sessions</span> delivered, over <span class="stat">$1 million in revenue</span> generated, and a ranking among the <span class="stat">top 10 of more than 3,000 Equinox coaches</span>. Before moving fully into creative production, I worked directly with clients, developed coaches, led teams, and managed a <span class="stat">$25 million business across five locations</span> and more than 1,500 clients, giving me a practical understanding of customer behavior, field execution, and the business realities behind the work.</p>
-      <p>Today, I apply that operating perspective across creative production, experience design, and technology &mdash; building scalable learning and communication experiences across <span class="stat">more than 117 locations</span>. Projects move from business need and stakeholder alignment through strategy, scripting, production, post-production, deployment, and iteration. Technology, AI, and automation extend that capability by helping me prototype faster, build connected systems, and scale solutions beyond a single deliverable, contributing to <span class="stat">approximately 20% faster production turnaround.</span></p>
+      <p class="proof-line"><b>9,500+</b> coaching sessions delivered &middot; <b>$1M+</b> revenue generated &middot; <b>Top 10 of 3,000+</b> Equinox coaches &middot; <b>1,500+</b> clients across 5 locations</p>
+      <p>15 years in human performance, coaching, and business operations gave me a direct understanding of customer behavior and field execution before I moved into creative production. Today I apply that operating perspective across creative production, experience design, and technology, building scalable learning and communication experiences across 117+ locations from business need through deployment and iteration.</p>
     </div>
   </div>
 </section>
@@ -283,7 +295,7 @@
   <div class="bio">
     <h2>Bridge, not<br>specialist.</h2>
     <div class="bio-copy">
-      <p>I'm not solely a creative producer or a technology specialist. I understand the business problem, the audience, and the behavior we're trying to influence, then build the content and technology solution to address it. That means operating as a bridge between business, creative, and technology &mdash; taking a strategic priority, shaping the narrative, designing the experience, and producing the final deliverable, often covering work that would otherwise require multiple specialists.</p>
+      <p>I'm not solely a creative producer or a technology specialist. I understand the business problem, the audience, and the behavior we're trying to influence, then build the content and technology solution to address it. That means operating as a bridge between business, creative, and technology: taking a strategic priority, shaping the narrative, designing the experience, and producing the final deliverable, often covering work that would otherwise require multiple specialists.</p>
     </div>
   </div>
 </section>
@@ -295,7 +307,8 @@
     <article class="reel">
       <div>
         <h3>EQX NEXT</h3>
-        <p>Opening film for Equinox's annual national forum, designed to set the tone for the event and transition teams into the awards experience. I partnered with stakeholders to shape the concept, narrative, and visual direction, then carried the work through production, post-production, motion, audio, and final delivery for the national stage.</p>
+        <p>Opening film for Equinox's annual national forum, designed to set the tone for the event and transition teams into the awards experience. Combined live production with a fully AI-curated workflow spanning scripting, environment generation, and voice likeness cloning.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">stakeholder alignment</span><span class="chip">concept development</span><span class="chip">creative direction</span><span class="chip">AI scripting</span><span class="chip">director</span><span class="chip">producer</span><span class="chip">editor</span><span class="chip">audio</span><span class="chip">colorist</span><span class="chip">packaging and delivery</span><span class="chip">ai artist (Higgsfield AI, environment generation)</span><span class="chip">ai artist (Eleven Labs, voice cloning/likeness)</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1184219718?h=1205977d6a&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="EQX NEXT"></iframe></div>
     </article>
@@ -303,7 +316,8 @@
     <article class="reel">
       <div>
         <h3>EFTI Rebrand | Leadership in Motion</h3>
-        <p>A rebranding film tracing EFTI's evolution from inception through its current identity and future direction. I partnered with stakeholders to shape the historical narrative, define the creative direction, and translate the brand's evolution into a clear visual and editorial story.</p>
+        <p>A rebranding film tracing EFTI's evolution from inception through its current identity and future direction.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">stakeholder alignment</span><span class="chip">scripting</span><span class="chip">storyboarding</span><span class="chip">talent coordination</span><span class="chip">cinematography</span><span class="chip">director</span><span class="chip">producer</span><span class="chip">editor</span><span class="chip">colorist</span><span class="chip">audio</span><span class="chip">workshop/event coverage</span><span class="chip">infographic design</span><span class="chip">ai artist (Eleven Labs, voiceover)</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1089669136?h=e18c0409b6&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="EFTI Rebrand | Leadership in Motion"></iframe></div>
     </article>
@@ -311,7 +325,8 @@
     <article class="reel">
       <div>
         <h3>Pilates Training Trailer</h3>
-        <p>Pilates Experience Trailer. Led the development of a brand storytelling asset designed to capture the private Pilates experience, instructor expertise, and member journey. I aligned with Pilates leadership to shape the concept and production approach, directed the shoot, and built the final story around leadership voiceover, carrying the project through cinematography, editing, audio, and final delivery.</p>
+        <p>Brand storytelling asset capturing the private Pilates experience, instructor expertise, and member journey.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">stakeholder alignment</span><span class="chip">concept development</span><span class="chip">director</span><span class="chip">producer</span><span class="chip">cinematographer</span><span class="chip">editor</span><span class="chip">colorist</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1222878470?h=e4ecd256e5&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="Pilates Training Trailer"></iframe></div>
     </article>
@@ -319,7 +334,8 @@
     <article class="reel">
       <div>
         <h3>Day in the Life | Leadership Series</h3>
-        <p>A multi-leader storytelling series spanning regional, club, sales, and personal training leadership. I structured the production from the ground up &mdash; aligning the narrative approach, building individualized leader prep guides, organizing the interview framework, directing each conversation, and shaping multiple perspectives into one consistent series.</p>
+        <p>Multi-leader storytelling series spanning regional, club, sales, and personal training leadership.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">narrative structure</span><span class="chip">leader prep guide development</span><span class="chip">interview framework design</span><span class="chip">interviewer</span><span class="chip">director</span><span class="chip">producer</span><span class="chip">editor</span><span class="chip">colorist</span><span class="chip">ai artist (Higgsfield AI, visuals/b-roll)</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1171141910?h=050b6daa09&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="Day in the Life | Leadership Series"></iframe></div>
     </article>
@@ -327,7 +343,8 @@
     <article class="reel">
       <div>
         <h3>Consultation Experience</h3>
-        <p>An end-to-end representation of the client consultation journey using fully generated characters and a custom-built branded environment. I designed character continuity, environments, interactions, and camera language across AI-assisted tools &mdash; showing how high-fidelity generated content can visualize complex SOPs without a traditional shoot.</p>
+        <p>End-to-end client consultation journey using fully generated characters and environments, no physical shoot, no location, no talent.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">concept development</span><span class="chip">AI character generation</span><span class="chip">AI environment generation</span><span class="chip">generative camera direction</span><span class="chip">editor</span><span class="chip">packaging and delivery</span><span class="chip">ai artist (Higgsfield AI, character and environment generation)</span><span class="chip">ai artist (Eleven Labs, voiceover)</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1220599682?h=3b1de694fc&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="Consultation Experience"></iframe></div>
     </article>
@@ -335,7 +352,8 @@
     <article class="reel">
       <div>
         <h3>Session Experience | Coach Level</h3>
-        <p>A high-level introduction to a larger organizational pilot currently deployed across 10 clubs, framing the coach experience and the behaviors the program reinforces. Built from the ground up with scalability in mind &mdash; with the potential to expand across the full 117-club portfolio.</p>
+        <p>Introduction to an organizational pilot deployed across 10 clubs, framing the coach experience and the behaviors the program reinforces, built with scalability in mind across the full 117-club portfolio.</p>
+<div class="role-row"><span class="role-label">My Role</span><div class="chips"><span class="chip">stakeholder alignment</span><span class="chip">interviewer</span><span class="chip">director</span><span class="chip">producer</span><span class="chip">editor</span><span class="chip">colorist</span><span class="chip">audio</span></div></div>
       </div>
       <div class="slate-card"><iframe src="https://player.vimeo.com/video/1189943639?h=2543b19dc7&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen webkitallowfullscreen mozallowfullscreen title="Session Experience | Coach Level"></iframe></div>
     </article>
@@ -360,10 +378,10 @@
     <div class="dash-head">
       <div>
         <h3>Dashboard Development &amp; Data Automation</h3>
-        <p>A custom web-based dashboard that transforms multiple operational and learning data sources into a unified interactive experience &mdash; front-end development, data modeling, JSON pipelines, automated publishing, and source-of-truth architecture.</p>
+        <p>A custom web-based dashboard that transforms multiple operational and learning data sources into a unified interactive experience: front-end development, data modeling, JSON pipelines, automated publishing, and source-of-truth architecture.</p>
       </div>
     </div>
-    <p style="color:var(--paper-dim); font-size:15.5px; max-width:70ch; margin:0;">Data moves from Excel and Power Query through automated workflows into structured JSON files, published and rendered through a custom HTML, CSS, and JavaScript interface &mdash; with interactive drill-downs, KPI visualization, coach-level profiles, geographic mapping, and automated refresh.</p>
+    <p style="color:var(--paper-dim); font-size:15.5px; max-width:70ch; margin:0;">Data moves from Excel and Power Query through automated workflows into structured JSON files, published and rendered through a custom HTML, CSS, and JavaScript interface, with interactive drill-downs, KPI visualization, coach-level profiles, geographic mapping, and automated refresh.</p>
   </div>
 </section>
 
